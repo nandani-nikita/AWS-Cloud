@@ -16,7 +16,7 @@ app.get('/', async (req, res) => {
   const findQuery = `select * from accounts order by user_id asc;`
   await crud.findFunction(findQuery);
   let result = await crud.findFunction(findQuery);
-  if (result == null) {
+  if (result == null || result.length == 0s) {
     res.status(406).send('No Data');
   }
   res.send(result);
