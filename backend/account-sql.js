@@ -1,17 +1,11 @@
 const { connection } = require('./db');
 
-const dropTableFunction = (dropQuery) => {
+const dropTableFunction = async (dropQuery) => {
     try {
-        connection.query(dropQuery, (err) => {
-            if (!err) {
-                console.log('Table dropped: accounts');
-                return 'Table dropped: accounts'
-            } else {
-                console.log('error occured: ', err);
-                return err;
-            }
-
-        });
+        await connection.query(dropQuery);
+       
+            return 'Table dropped'
+      
     } catch (e) {
         console.log('error: ', e);
         return e;
@@ -19,17 +13,12 @@ const dropTableFunction = (dropQuery) => {
 
 }
 
-const createFunction = (createTableQuery) => {
+const createFunction = async (createTableQuery) => {
     try {
-        connection.query(createTableQuery, (err) => {
-            if (!err) {
-                console.log('table created: accounts');
-                return 'Table created: accounts';
-            } else {
-                console.log('error occured: ', err);
-                return err;
-            }
-        });
+        await connection.query(createTableQuery);
+        
+            return 'Table Created'
+ 
     } catch (e) {
         console.log('error: ', e);
         return e;
@@ -37,12 +26,12 @@ const createFunction = (createTableQuery) => {
 
 }
 
-const insertFunction = (columns, data) => {
+const insertFunction = async (columns, data) => {
 
     try {
         for (let i = 0; i < data.length; i++) {
             let insertDataQuery = `insert into accounts (${columns}) values (${data[i]});`
-            connection.query(insertDataQuery, (err) => {
+            await connection.query(insertDataQuery, (err) => {
                 if (!err) {
                     console.log('data added, row: ' + (i + 1));
                 } else {
@@ -61,18 +50,7 @@ const insertFunction = (columns, data) => {
 
 const findFunction = async (findQuery) => {
     try {
-        // var data = connection.query(findQuery, (err, res) => {
-        //     if (!err) {
-        //         console.log(res.rows);
-        //         var data = res.rows;
-        //         return data;
-        //     } else {
-        //         console.log('error occured: ', err);
-        //         return err;
-        //     }
-        // });
         var data = await connection.query(findQuery);
-        // console.log(data.rows);
         return data.rows;
     } catch (e) {
         console.log('error: ', e);
@@ -81,17 +59,10 @@ const findFunction = async (findQuery) => {
 
 }
 
-const updateFunction = (updateQuery) => {
+const updateFunction = async (updateQuery) => {
     try {
-        connection.query(updateQuery, (err, res) => {
-            if (!err) {
-                console.log('Table updated. \nRows affected: ' + res.rowCount);
-                return 'Table updated. \nRows affected: ' + res.rowCount;
-            } else {
-                console.log('error occured: ', err);
-                return err;
-            }
-        });
+        let data = await connection.query(updateQuery);
+        return `Affected Rows: ${data.rowCount}`;
     } catch (e) {
         console.log('error: ', e);
         return e;
@@ -99,17 +70,10 @@ const updateFunction = (updateQuery) => {
 
 }
 
-const deleteFunction = (deleteQuery) => {
+const deleteFunction = async (deleteQuery) => {
     try {
-        connection.query(deleteQuery, (err, res) => {
-            if (!err) {
-                console.log('Request data deleted. \nRows affected: ' + res.rowCount);
-                return 'Request data deleted. \nRows affected: ' + res.rowCount;
-            } else {
-                console.log('error occured: ', err);
-                return err;
-            }
-        });
+        let data = await connection.query(deleteQuery);
+        return `Affected Rows: ${data.rowCount}`;
     } catch (e) {
         console.log('error: ', e);
         return e;

@@ -31,13 +31,14 @@ app.get('/createTable', async(req, res) => {
   );`
   await crud.dropTableFunction(dropQuery);
   let result = await crud.createFunction(createTableQuery);
+  console.log(result);
   res.send(result);
 });
 
 app.get('/insertRecord', async(req, res) => {
   const columns = `user_name, email, acc_balance`
 
-  var data = [`'Nikita Nandani', 'nikita@bdec.in', 1500`, `'Shreya Prasad', 'shreya@abc.in', 2000`, `'Asyush Aman', 'ayush@aman.in', 50`, `'Shruti', 'shru@gmail.in', 100`, `'Ved Prakash', 'nikita@bdec.in', 1070`];
+  var data = [`'Nikita Nandani', 'nikita@bdec.in', 1500`, `'Shreya Prasad', 'shreya@abc.in', 2000`, `'Asyush Aman', 'ayush@aman.in', 50`, `'Shruti', 'shru@gmail.in', 100`, `'Ved Prakash', 'ved@pqr.in', 1070`];
   let result =  await crud.insertFunction(columns, data);
   res.send(result);
 });
@@ -52,9 +53,9 @@ app.get('/updateRecord', async(req, res) => {
   set acc_type = 'CURRENT'
   where acc_type = 'SB'`;
   
-  let result =  await crud.updateFunction(updateQuery1);
-  await crud.updateFunction(updateQuery2);
-  res.send(result);
+  await crud.updateFunction(updateQuery1);
+  let result =  await crud.updateFunction(updateQuery2);
+  res.json(result);
 });
 
 app.get('/deleteRecord', async(req, res)=>{
