@@ -16,10 +16,21 @@ app.get('/', async (req, res) => {
   const findQuery = `select * from accounts order by user_id asc;`
   await crud.findFunction(findQuery);
   let result = await crud.findFunction(findQuery);
+  if (result == null) {
+    res.status(406).send('No Data');
+  }
   res.send(result);
 });
 
-app.get('/createTable', async(req, res) => {
+
+app.get('/dropTable', async (req, res) => {
+  const dropQuery = `drop table if exists accounts`
+  let result = await crud.dropTableFunction(dropQuery);
+
+  res.send(result);
+});
+
+app.get('/createTable', async (req, res) => {
   const dropQuery = `drop table if exists accounts`
 
   const createTableQuery = `create table accounts (
@@ -35,16 +46,16 @@ app.get('/createTable', async(req, res) => {
   res.send(result);
 });
 
-app.get('/insertRecord', async(req, res) => {
+app.get('/insertRecord', async (req, res) => {
   const columns = `user_name, email, acc_balance`
 
   var data = [`'Nikita Nandani', 'nikita@bdec.in', 1500`, `'Shreya Prasad', 'shreya@abc.in', 2000`, `'Asyush Aman', 'ayush@aman.in', 50`, `'Shruti', 'shru@gmail.in', 100`, `'Ved Prakash', 'ved@pqr.in', 1070`];
-  let result =  await crud.insertFunction(columns, data);
+  let result = await crud.insertFunction(columns, data);
   res.send(result);
 });
 
-app.get('/updateRecord', async(req, res) => {
-  
+app.get('/updateRecord', async (req, res) => {
+
   const updateQuery1 = `update accounts
   set user_name = 'Ayush Aman'
   where email = 'ayush@aman.in'`;
@@ -52,14 +63,14 @@ app.get('/updateRecord', async(req, res) => {
   const updateQuery2 = `update accounts
   set acc_type = 'CURRENT'
   where acc_type = 'SB'`;
-  
+
   await crud.updateFunction(updateQuery1);
-  let result =  await crud.updateFunction(updateQuery2);
+  let result = await crud.updateFunction(updateQuery2);
   res.json(result);
 });
 
-app.get('/deleteRecord', async(req, res)=>{
-  
+app.get('/deleteRecord', async (req, res) => {
+
   const deleteQuery = `delete from accounts
   where acc_balance = 1500`;
 

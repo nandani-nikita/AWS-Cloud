@@ -54,7 +54,7 @@ const findFunction = async (findQuery) => {
         return data.rows;
     } catch (e) {
         console.log('error: ', e);
-        return e;
+        return null;
     }
 
 }
