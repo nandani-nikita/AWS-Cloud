@@ -1,6 +1,5 @@
 const { Client } = require('pg')
-// const dotenv =require("dotenv");
-// dotenv.config({path:'./config.env'});
+
 const connection = new Client({
   host     : "cloudassg.cxg6poyroahl.ap-south-1.rds.amazonaws.com",
   user     : "postgres",
@@ -14,7 +13,6 @@ connection.connect(function(err) {
     console.error('Database connection failed: ' + err.stack);
     return;
   }
-
   console.log('Connected to database.');
 });
 

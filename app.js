@@ -1,4 +1,5 @@
-const {connection} = require('./db');
+require('./db');
+
 require('./account-sql')
 const express = require('express');
 const app = express();
@@ -11,18 +12,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
-
-
-// // var query = `INSERT INTO accounts (user_id,username,password,email,created_on)
-// // VALUES (25,'vghvjbk','ghv',' njbhbkh','2022-05-15')`
-// // connection.query(query, (err) => {
-// //     console.log(err,"\n\n");
-// //   });
-
-// connection.query("SELECT * from accounts", (err, res) => {
-//     console.log(err,"\n\n");
-//     for (let row in res.rows) {
-//         console.log(res.rows[row]);
-//     }
-//     // connection.end();
-//   });

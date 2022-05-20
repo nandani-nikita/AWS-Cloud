@@ -40,7 +40,6 @@ for (let i = 0; i < data.length; i++) {
     });
 }
 
-
 const findQuery = `select * from accounts order by user_id asc;`
 
 const findFunction = () => {
@@ -64,6 +63,7 @@ const updateFunction = (updateQuery) => {
         }
     });
 }
+
 const updateQuery1 = `update accounts
     set user_name = 'Ayush Aman'
     where email = 'ayush@aman.in'`;
