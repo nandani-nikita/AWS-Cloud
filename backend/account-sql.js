@@ -8,7 +8,7 @@ const dropTableFunction = async (dropQuery) => {
       
     } catch (e) {
         console.log('error: ', e);
-        return e;
+        return null;
     }
 
 }
@@ -21,7 +21,7 @@ const createFunction = async (createTableQuery) => {
  
     } catch (e) {
         console.log('error: ', e);
-        return e;
+        return null;
     }
 
 }
@@ -43,7 +43,7 @@ const insertFunction = async (columns, data) => {
 
     } catch (e) {
         console.log('error: ', e);
-        return e;
+        return null;
     }
 
 }
@@ -65,7 +65,7 @@ const updateFunction = async (updateQuery) => {
         return `Affected Rows: ${data.rowCount}`;
     } catch (e) {
         console.log('error: ', e);
-        return e;
+        return null;
     }
 
 }
@@ -76,7 +76,7 @@ const deleteFunction = async (deleteQuery) => {
         return `Affected Rows: ${data.rowCount}`;
     } catch (e) {
         console.log('error: ', e);
-        return e;
+        return null;
     }
 
 }

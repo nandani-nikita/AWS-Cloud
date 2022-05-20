@@ -12,9 +12,9 @@ const AllData = () => {
 					throw response
 				}
 			})
-			.then(data => {
-				console.log(data);
-
+			.then(result => {
+				console.log(result);
+				const data = result.msg;
 				document.getElementById('dataDiv').innerText = "";
 
 				if (data.length > 0) {

@@ -27,8 +27,11 @@ app.get('/', async (req, res) => {
 app.get('/dropTable', async (req, res) => {
   const dropQuery = `drop table if exists accounts`
   let result = await crud.dropTableFunction(dropQuery);
-
-  res.json({msg:result});
+  if (result == null || result.length == 0) {
+    res.status(406).json({msg:'No Data'});
+  } else {
+    res.json({msg:result});
+  }
 });
 
 app.get('/createTable', async (req, res) => {
@@ -44,7 +47,11 @@ app.get('/createTable', async (req, res) => {
   await crud.dropTableFunction(dropQuery);
   let result = await crud.createFunction(createTableQuery);
   console.log(result);
-  res.json({msg:result});
+  if (result == null || result.length == 0) {
+    res.status(406).json({msg:'No Data'});
+  } else {
+    res.json({msg:result});
+  }
 });
 
 app.get('/insertRecord', async (req, res) => {
@@ -52,7 +59,11 @@ app.get('/insertRecord', async (req, res) => {
 
   var data = [`'Nikita Nandani', 'nikita@bdec.in', 1500`, `'Shreya Prasad', 'shreya@abc.in', 2000`, `'Asyush Aman', 'ayush@aman.in', 50`, `'Shruti', 'shru@gmail.in', 100`, `'Ved Prakash', 'ved@pqr.in', 1070`];
   let result = await crud.insertFunction(columns, data);
-  res.json({msg:result});
+  if (result == null || result.length == 0) {
+    res.status(406).json({msg:'No Data'});
+  } else {
+    res.json({msg:result});
+  }
 });
 
 app.get('/updateRecord', async (req, res) => {
@@ -67,7 +78,11 @@ app.get('/updateRecord', async (req, res) => {
 
   await crud.updateFunction(updateQuery1);
   let result = await crud.updateFunction(updateQuery2);
-  res.json({msg:result});
+  if (result == null || result.length == 0) {
+    res.status(406).json({msg:'No Data'});
+  } else {
+    res.json({msg:result});
+  }
 });
 
 app.get('/deleteRecord', async (req, res) => {
@@ -76,6 +91,9 @@ app.get('/deleteRecord', async (req, res) => {
   where acc_balance = 1500`;
 
   let result = await crud.deleteFunction(deleteQuery);
-  res.json({msg:result});
-
+  if (result == null || result.length == 0) {
+    res.status(406).json({msg:'No Data'});
+  } else {
+    res.json({msg:result});
+  }
 });

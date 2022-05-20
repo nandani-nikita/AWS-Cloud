@@ -12,7 +12,7 @@ const CreateTable = () => {
 				console.log(data);
 
 				document.getElementById('dataDiv').innerText = "";
-				document.getElementById('dataDiv').innerText = data;
+				document.getElementById('dataDiv').innerText = data.msg;
 
 			}).catch(err => {
 				console.log(err);
