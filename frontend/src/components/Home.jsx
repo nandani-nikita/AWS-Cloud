@@ -8,9 +8,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
 
     useEffect(() => {
-        fetch('http://3.110.43.41:8080/',{
-        mode: 'no-cors',
-        })
+        fetch('http://3.110.43.41:8080/')
         .then(response =>{
             console.log('abc');
             return response.json();
