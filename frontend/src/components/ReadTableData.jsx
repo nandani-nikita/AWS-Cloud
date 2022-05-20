@@ -5,8 +5,12 @@ const AllData = () => {
 	useEffect(() => {
 		fetch('http://3.110.43.41:8080/')
 			.then(response => {
-				console.log('abc');
-				return response.json();
+				if(response.status == 200) {
+					return response.json();
+				} else {
+					document.getElementById('dataDiv').innerText = "No Data Fetched";
+					throw response
+				}
 			})
 			.then(data => {
 				console.log(data);
@@ -39,6 +43,8 @@ const AllData = () => {
 					document.getElementById('dataDiv').appendChild(table);
 				}
 
+			}).catch(err => {
+				console.log(err);
 			})
 	}, []);
 	return (
