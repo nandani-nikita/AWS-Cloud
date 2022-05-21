@@ -6,37 +6,37 @@ import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
 
-   
 
-return (
-	<nav>
-      <NavLink   to="/">
-        Home
+
+  return (
+    <nav>
+      <NavLink to="/" className='navLink'>
+        <span className="nav">Home</span>
       </NavLink>
-      <NavLink   to="/create">
-        Create Table
+      <NavLink to="/create" className='navLink'>
+        <span className="nav">Create Table</span>
       </NavLink>
-      <NavLink   to="/insert">
-        Insert Data
+      <NavLink to="/insert" className='navLink'>
+        <span className="nav">Insert Data</span>
       </NavLink>
-      <NavLink   to="/read">
-        Get All Data
+      <NavLink to="/read" className='navLink'>
+        <span className="nav">Get Data</span>
       </NavLink>
-      <NavLink   to="/update">
-        Update Data
+      <NavLink to="/update" className='navLink'>
+        <span className="nav">Update Data</span>
       </NavLink>
-      <NavLink   to="/delete">
-        Delete Data
+      <NavLink to="/delete" className='navLink'>
+        <span className="nav">Delete Data</span>
       </NavLink>
-      <NavLink   to="/drop">
-        Drop Table
+      <NavLink to="/drop" className='navLink'>
+        <span className="nav">Drop Table</span>
       </NavLink>
-     
+
     </nav>
-	
-	
-		
-);
+
+
+
+  );
 };
 
 export default NavBar;

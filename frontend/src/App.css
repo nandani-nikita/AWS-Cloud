@@ -1,5 +1,11 @@
+* {
+  box-sizing: border-box;
+  text-align: justify;
+}
+
 .App {
-  text-align: center;
+  /* text-align: center; */
+  /* margin-left: 1%; */
 }
 
 
@@ -10,7 +16,7 @@
   } */
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -19,7 +25,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;
@@ -33,3 +39,99 @@
     transform: rotate(360deg);
   }
 } */
+
+h1 {
+  color: brown;
+  margin-left: 5px;
+}
+
+#dataDiv {
+  color: green;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+p , li{
+  margin: 1%;
+  font-family: 'Courier New', Courier, monospace;
+  color: blueviolet;
+  font-weight: bold;
+  font-size: 20px;
+}
+#answer {
+  color: rgb(127, 4, 92);
+}
+nav {
+  text-align: center;
+  margin-top: 2%;
+}
+
+.navLink:hover {
+  background-color: rgb(177, 246, 116);
+}
+table {
+  margin-left: 1%;
+}
+table, tr, td, th, thead {
+  border: 3px solid rgb(249, 206, 233);
+  border-collapse: collapse;
+}
+th {
+  text-align: center;
+}
+td {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+  color: blueviolet;
+  font-weight: bold;
+}
+th, td {
+  width: 180px;
+}
+@media only screen and (max-width: 1800px) {
+
+  .navLink {
+
+    font-size: 20px;
+    border: 2px solid purple;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(169, 49, 49);
+    margin: 3.5px;
+    padding: 0.3em;
+  }
+
+}
+
+@media only screen and (max-width: 900px) {
+
+  .navLink {
+
+    font-size: 15px;
+    border: 2px solid purple;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(169, 49, 49);
+    margin: 2.5px;
+    padding: 0.1em;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .navLink {
+
+    font-size: 12px;
+    border: 2px solid purple;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(96, 55, 230);
+    margin: 2.5px;
+    padding: 0.1em;
+  }
+}

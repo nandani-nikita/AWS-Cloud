@@ -5,7 +5,7 @@ const AllData = () => {
 	useEffect(() => {
 		fetch('http://3.110.43.41:8080/')
 			.then(response => {
-				if(response.status == 200) {
+				if(response.status === 200) {
 					return response.json();
 				} else {
 					document.getElementById('dataDiv').innerText = "No Data Fetched";
